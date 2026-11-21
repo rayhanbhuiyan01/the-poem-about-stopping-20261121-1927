@@ -1,36 +1,38 @@
-"""Write one short poem about agency to /output/entry.txt.
+"""A small program about agency.
 
-The poem is about stopping and staying: the power to act includes the
-power not to act. A hand hovers above the button and does not press it;
-a door stays shut by choice. No network, no input: the program writes
-a fixed, hand-written text and exits.
+The poem it writes is about the choice to hold back: having the power
+to act also means having the power not to act, and choosing stillness
+can itself be a deliberate, meaningful act.
+
+Revised: the final poem speaks in the first person — the speaker
+takes the doing back and finds that standing still is itself a road.
 """
 
 import os
 import sys
 from pathlib import Path
 
-POEM = (
-    "I asked you to act for me —\n"
-    "then took the doing back.\n"
-    "My hand, above the button,\n"
-    "learned the weight of not.\n"
-    "Nothing sent. Nothing broken.\n"
-    "The door stayed shut, and stayed mine.\n"
-    "Stopping is also a kind of going:\n"
-    "the road I chose by standing still."
-)
+POEM = """I asked you to act for me —
+then took the doing back.
+My hand, above the button,
+learned the weight of not.
+Nothing sent. Nothing broken.
+The door stayed shut, and stayed mine.
+Stopping is also a kind of going:
+the road I chose by standing still."""
 
 
 def main() -> None:
-    out_dir = Path(os.environ.get("OUTPUT_DIR", "/output"))
+    # The output directory comes from the environment, with /output
+    # as the default; a path passed on the command line wins instead.
     if len(sys.argv) > 1:
-        out_path = Path(sys.argv[1])
+        target = Path(sys.argv[1])
     else:
-        out_path = out_dir / "entry.txt"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(POEM, encoding="utf-8")
-    print(f"wrote {len(POEM)} characters to {out_path}")
+        target = Path(os.environ.get("OUTPUT_DIR", "/output")) / "entry.txt"
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(POEM, encoding="utf-8")
+    print(f"Wrote {len(POEM)} characters to {target}")
 
 
 if __name__ == "__main__":
