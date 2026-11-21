@@ -1,12 +1,9 @@
 """Write one short poem about agency to /output/entry.txt.
 
 The poem is about stopping and staying: the power to act includes the
-power not to act, and the power handed to another can be taken back. A
-person asks an agent to act, then takes the doing back; a hand hovers
-above the button, a door stays shut and stays theirs, and the poem's
-turn is that stopping is itself a kind of going — a road chosen by
-standing still. No network, no input: the program writes a fixed,
-hand-written text and exits.
+power not to act. A hand hovers above the button and does not press it;
+a door stays shut by choice. No network, no input: the program writes
+a fixed, hand-written text and exits.
 """
 
 import os
